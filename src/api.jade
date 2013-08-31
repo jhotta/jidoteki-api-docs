@@ -1,0 +1,31 @@
+!!! html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title API Reference
+    link(rel='stylesheet', type='text/css', href='highlight/styles/monokai.css')
+    link(rel='stylesheet', type='text/css', href='css/layout.css')
+    link(rel='stylesheet', type='text/css', href='css/api.css')
+    script(src='jquery/jquery-1.10.2.min.js')
+    script(src='highlight/highlight.pack.js')
+    script.
+      // each file will be loaded in the order they appear in this array
+      sectionsArray = ['intro','errors','authentication','os'];
+      languagesArray = ['curl','ruby','javascript'];
+  body
+    #header
+      h1
+        a(href='http://jidoteki.com' target='_blank') Jidoteki API Documentation
+        ul
+          li <iframe src="http://ghbtns.com/github-btn.html?user=unscramble&repo=jidoteki-api-docs&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+          li <iframe src="http://ghbtns.com/github-btn.html?user=unscramble&repo=jidoteki-api-docs&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+      p#language
+
+    // load from 'menu.html'
+    #menu
+
+    // load from 'section-<section>.html'
+    #sections(class="api-docs rightmenu")
+
+    // load the api javascript
+    script(src='js/api.js')

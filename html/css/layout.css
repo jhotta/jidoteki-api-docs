@@ -1,0 +1,100 @@
+/*
+ * Mostly borrowed from Matthew James Taylor
+ * http://matthewjamestaylor.com/blog/perfect-2-column-right-menu.htm
+ */
+
+body {
+	margin:0;
+	padding:0;
+	border:0;			/* This removes the border around the viewport in old versions of IE */
+	width:100%;
+	background:#fff;
+	min-width:600px;    	/* Minimum width of layout - remove line if not required */
+					/* The min-width property does not work in old versions of Internet Explorer */
+	font-size:90%;
+}
+
+#header {
+	clear:both;
+	float:left;
+	width:100%;
+	top: 0;
+	position:fixed;
+	z-index: 1000;
+	width: 100%;
+	visibility: visible;
+  background:inherit;
+}
+
+#header p,
+#header h1 {
+	padding:.4em 15px;
+	margin:0;
+}
+#header ul {
+	float: right;
+}
+#header ul li {
+	float: left;
+}
+#header ul li.text {
+	font-size: 0.4em;
+	padding: 10px 20px;
+}
+#header ul li iframe {
+	padding: 0;
+	margin: 0;
+}
+
+/* column container */
+.api-docs {
+	position:absolute;	/* This fixes the IE7 overflow hidden bug (maybe?) */
+	clear:both;
+	float:left;
+	overflow:hidden;		/* This chops off any overhanging divs */
+}
+
+/* common column settings */
+.method-section {
+	float:left;
+	width:100%;
+	position:relative;
+}
+.method-description,
+.method-example {
+	float:left;
+	position:relative;
+	padding:0 0 1em 0;
+	overflow:hidden;
+}
+
+/* 2 Column (right menu) settings */
+.rightmenu {
+	background:#292e33;		/* right column background colour */
+}
+.rightmenu .method-section {
+	right:50%;			/* right column width */
+	background:#fff;		/* left column background colour */
+}
+.rightmenu .method-description {
+	width:46%;			/* left column content width (left column width minus left and right padding) */
+	left:52%;			/* (right column width) plus (left column left padding) */
+	word-wrap: normal;
+}
+.rightmenu .method-example {
+	width:46%;			/* right column content width (right column width minus left and right padding) */
+	left:54.1%;			/* (right column width) plus (left column left and right padding) plus (right column left padding) */
+	word-wrap: break-word;
+	padding: 0 2%;
+}
+
+/* Footer styles */
+#footer {
+	clear:both;
+	float: left;
+	width:100%;
+	border-top:1px solid #000;
+	border: 1px solid red;
+	height: 60px;
+	z-index: 2000;
+}

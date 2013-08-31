@@ -4,11 +4,14 @@ WITH THE EXCEPTION OF THE FOLLOWING:
 
 * Documentation layout heavily inspired by Stripe - https://stripe.com/docs/api
 
-* 'google-code-prettify' licensed under the Apache License, Version 2.0 and
-Copyright (C) 2013 Google Inc. - https://code.google.com/p/google-code-prettify/
-
 * 'jquery' licensed under the MIT License and
 Copyright 2013 jQuery Foundation and other contributors - http://jquery.com/
 
 * 'css/layout.css' was created by Matthew James Taylor and
 Copyright (c) 2013 Matthew James Taylor - http://matthewjamestaylor.com/blog/perfect-2-column-right-menu.htm
+
+* 'highlight' is licensed and
+Copyright (c) 2006, Ivan Sagalaev - http://softwaremaniacs.org/soft/highlight/en/
+
+* 'ghbuttons' is licensed under the Apache License v2.0 and
+Copyright 2011 Mark Otto - https://github.com/mdo/github-buttons

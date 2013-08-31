@@ -1,0 +1,78 @@
+
+<div class="method-section">
+  <div class="method-description">
+    <h1 id="intro">API Reference (incomplete)</h1><code class="required">Notice: This API documentation is incomplete.</code>
+    <p>
+      The <a href="http://jidoteki.com">Jidoteki</a> beta API is a
+      <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>
+      API which allows you to offload and automate your operating system installations.
+      The API is still in beta, so this documentation will continue to be updated as new
+      features are added.
+      
+    </p>
+    <h2>Getting started</h2>
+    <p>Below you'll find some information and common keywords found throughout this documentation.</p>
+    <table>
+      <tr>
+        <th>Keyword</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>JSON</td>
+        <td>All results are returned as <a href="http://www.json.org/">JSON</a> strings.</td>
+      </tr>
+      <tr>
+        <td>HTTPS</td>
+        <td>For security purposes, all API requests must be made over <a href="http://en.wikipedia.org/wiki/HTTP_Secure">HTTPS</a>.</td>
+      </tr>
+      <tr>
+        <td>TIMESTAMPS</td>
+        <td>All timestamps are returned as UNIX timestamps in UTC, with 6 digit precision (microseconds).<br/><strong>Example:</strong> <code>1363414483.832038</code></td>
+      </tr>
+      <tr>
+        <td>CONTENT-TYPE</td>
+        <td>The content-type for all requests is a standard JSON MIME media type.<br/><strong>Example:</strong> <code>application/json</code></td>
+      </tr>
+      <tr>
+        <td>PARAMETERS</td>
+        <td>Request parameters must be sent as a JSON-formatted string.<br/><strong>Example:</strong> <code>{"os_id":"debian-7.1.0"}</code></td>
+      </tr>
+      <tr>
+        <td>HMAC</td>
+        <td>Each API request must contain an HMAC (signature) of the entire request. Details are in the Authentication section.</td>
+      </tr>
+      <tr>
+        <td>API KEY</td>
+        <td>A user's secret API KEY is used to generate each HMAC signature.</td>
+      </tr>
+      <tr>
+        <td>ACCESS TOKENS</td>
+        <td>An access token is a temporary unique identification string sent as an HTTP header. It expires after 8 hours.</td>
+      </tr>
+      <tr>
+        <td>USER-AGENT</td>
+        <td>You can use almost any HTTP header User-Agent you want, limited to 128 characters.<br/><strong>Example:</strong> <code>curl/7.21.4 (macbook air @ home)</code></td>
+      </tr>
+      <tr>
+        <td>IPv6</td>
+        <td>The API is accessible over IPv4 and IPv6.<br/><strong>Example:</strong> <code>curl --ipv6</code></td>
+      </tr>
+      <tr>
+        <td>SHA-256</td>
+        <td>The hashing algorithm used to generate an HMAC signature is SHA-256.</td>
+      </tr>
+      <tr>
+        <td>UID</td>
+        <td>When requesting an ACCESS TOKEN, you need to supply your UID (User ID) which is a 7-character alphanumeric string.</td>
+      </tr>
+    </table>
+  </div>
+  <div class="method-example">
+    <h3>API Endpoint</h3>https://beta.jidoteki.com/v0
+    <h4>Summary of Resource URLs</h4>
+    <ul>
+      <li>GET /auth/user</li>
+      <li>GET /os/list</li>
+    </ul>
+  </div>
+</div>

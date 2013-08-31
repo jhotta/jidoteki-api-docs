@@ -1,0 +1,257 @@
+/*
+ * API Documentation CSS
+ * Copyright (c) 2013 Alex Williams, Unscramble <license@unscramble.jp>
+ * https://github.com/unscramble/jidoteki-api-docs
+ */
+
+html {
+  font-size: 62.5%; /* set to 10px */
+}
+body {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-weight: normal;
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: #4B4B4B;
+}
+
+#header h1 {
+  background-color: #F0F2F6;
+}
+
+#header h1 a {
+  color: #000;
+}
+#language {
+	clear:both;
+	margin:0;
+	padding:8px 15px !important;
+	text-align:right;
+  border-top: 0;
+  background-color: #292e33;
+  color: #FFF;
+  background: -webkit-linear-gradient(#3E4145, #292e33);
+  background-image: linear-gradient(#3E4145, #292e33);
+  box-shadow: rgba(0, 0, 0, 0.45098) 0px 1px 2px 0px;
+}
+
+#menu {
+  position: fixed;
+  border-right: 1px solid #dadfe5;
+  overflow-y: auto;
+  bottom: 0;
+  background:inherit;
+  z-index: 999;
+  top: 100px;
+  width: 200px;
+}
+
+/* CSS overrides */
+.api-docs {
+  padding-top: 100px;   /* Same as the #menu top */
+  padding-left: 200px;  /* Same as the #menu width */
+}
+.prettyprint,
+li.L1, li.L3, li.L5, li.L7, li.L9 {
+  background: #292e33;
+}
+ol li {
+  line-height: normal;
+}
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
+  list-style-type: none;
+}
+
+/* Text styling */
+
+h2,
+h1 {
+  font-weight: bold;
+  color: #222;
+}
+
+button,
+a {
+  text-decoration: none;
+  color: #4F9FEF;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover,
+a:hover {
+  text-decoration: underline;
+  color: #3577D0;
+}
+
+p {
+  line-height: 200%;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+table { 
+	width: 100%;
+	table-layout: fixed;
+	border-collapse:collapse;
+	border:1px solid #F3F3F3;
+	background: #FFF;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+	border-bottom: 0;
+}
+td {
+	border-top:1px solid #F6F3F3;
+	border-right:1px solid #F6F3F3;
+	padding: 5px 10px;
+}
+caption {
+	font-size: 1.4em;
+	border: 1px solid #DBDBDB;
+	background-color: #F3F3F3;
+}
+th {
+	padding: 10px;
+}
+tr:first-child {
+	text-align: left;
+}
+th:first-child {
+	width: 100px;
+}
+
+#language button {
+  font-size: 0.8em;
+  font-weight: normal;
+  color: #DAE4F2;
+  text-transform: uppercase;
+  padding: 5px 15px;
+  margin: 0 5px;
+	border: 0;
+	background: -webkit-linear-gradient(#77787A, #2A2F34);
+	background: -moz-linear-gradient(#77787A, #2A2F34);
+	background-image: linear-gradient(#77787A, #2A2F34);
+	border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	box-shadow: rgba(255, 255, 255, 0.0980392) 0px 1px 0px 0px, #000 0px 1px 0px 0px inset, #25282E 0px -1px 0px 0px inset;
+}
+
+#language button.selected {
+  color: #E3E3E3;
+	background: -webkit-linear-gradient(#14171A, #2A2F34);
+	background: -moz-linear-gradient(#14171A, #2A2F34);
+  background-image: linear-gradient(#14171A, #2A2F34);
+}
+
+#menu {
+  padding-top: 16px;
+}
+
+#menu ul li {
+  padding: 0;
+  font-size: 0.9em;
+}
+
+#menu ul li a {
+  padding: 4px 20px;
+  display: block;
+  font-weight: bold;
+}
+
+#menu ul li span.children a {
+  font-weight: normal;
+  padding: 4px 30px;
+  display: normal;
+}
+
+#menu ul li a:hover,
+#menu ul li a.viewing {
+  background-color: #4F9FEF;
+  color: #FFF;
+  background: -webkit-linear-gradient(#4F9FEF, #3577D0);
+  text-decoration: none;
+}
+
+.method-section {
+  border-bottom: 1px solid #DADADA;
+}
+.method-example {
+  border-top: 1px solid #3D3D3D;
+
+}
+.method-description h1 {
+  font-size: 1.6em;
+}
+.method-description .example:before {
+  content: 'Example: ';
+  color: #000;
+  font-style: italic;
+}
+.method-description .example {
+  font-style: normal;
+  font-family: "Lucida Console", Monaco, monospace;
+  color: #0D921D;
+  display: block;
+  padding: 0 2px;
+}
+.method-description code {
+  font-family: "Lucida Console", Monaco, monospace;
+  color: #0D921D;
+  background-color: #EEFFEC;
+  padding: 0 2px;
+	word-wrap: break-word;
+}
+code.required {
+	padding: 0;
+	color: #E22B2B;
+	background-color: #FFF;
+}
+code.optional {
+	padding: 0;
+	color: #4459F8;
+	background-color: #FFF;
+}
+.method-example {
+  color: #DAE4F2;
+  font-family: Verdana, Geneva, sans-serif;
+}
+.method-example pre,
+.method-example h4,
+.method-example h3,
+.method-example h2 {
+  color: #E3E3E3;
+  font-family: "Lucida Console", Monaco, monospace;
+  margin: 30px 0 10px 0;
+}
+.method-example pre {
+  margin-top: 0;
+  font-size: 0.9em;
+}
+.method-example pre span {
+	word-wrap: break-word;
+}
+.method-example ol {
+  padding: 0;
+}
+.method-example ul li {
+  line-height: 200%;
+}
+
+/* Section examples */
+.method-definition:after {
+  content: 'definition';
+  text-transform: uppercase;
+}
+.method-request:after {
+  content: 'example request';
+  text-transform: uppercase;
+}
+.method-response:after {
+  content: 'example response';
+  text-transform: uppercase;
+}

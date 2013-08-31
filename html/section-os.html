@@ -1,0 +1,88 @@
+
+<div class="method-section">
+  <div class="method-description">
+    <h1 id="os">Operating Systems</h1>
+    <p>Jidoteki provides a choice of 4 different Operating Systems: CentOS, Debian, FreeBSD, and Windows.</p>
+    <p>The full list of available Operating Systems is available on <a href="https://github.com/unscramble/jidoteki-os-templates">GitHub</a> in the <code>os_list.json</code> file. You can also query our API to fetch this list.</p>
+  </div>
+  <div class="method-example">
+    <h3>HMAC Signature</h3>
+    <pre class="prettyprint lang-curl bash">REQUEST METHOD: GET
+REQUEST URL: https://api.beta.jidoteki.com/v0/os/list
+API KEY: 96f1ad9d9407ebdf3603ca6b45ccd89
+STRING TO SIGN: 'GEThttps://api.beta.jidoteki.com/v0/os/list'
+</pre>
+    <pre class="prettyprint lang-curl bash">$ echo -n \
+  'GEThttps://api.beta.jidoteki.com/v0/os/list' | \
+  openssl dgst -sha256 \
+  -hmac '96f1ad9d9407ebdf3603ca6b45ccd89'
+  </pre>
+    <h3 class="method-response"></h3>
+    <pre class="prettyprint lang-curl json">998385d8d251f192cc062c19ff23c29a03adcd03d871dabeb5e4795991bfcb4f</pre>
+  </div>
+</div>
+<div class="method-section">
+  <div class="method-description">
+    <h1 id="os_list">List available Operating Systems</h1>
+    <p>
+      This request allows you get a list of Operating Systems available for installation.
+      The <code>os_id</code> and <code>os_arch</code> are used for creating virtual images, while the other
+      information is only there for reference.
+    </p>
+    <table>
+      <caption>Header Parameters</caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Validation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>X-Auth-Token</td>
+          <td><code class="required">required</code><br/>The Token must be exactly 64 characters and alphanumeric.<br/><strong>Example: </strong><code>2e0a696ea8746b5daa6e5a6cbb841a34ef7f9090ac2acf5ae2bc87311903ad23</code></td>
+        </tr>
+        <tr>
+          <td>X-Auth-Signature</td>
+          <td><code class="required">required</code><br/>The HMAC Signature must be exactly 64 characters and alphanumeric.<br/><strong>Example: </strong><code>998385d8d251f192cc062c19ff23c29a03adcd03d871dabeb5e4795991bfcb4f</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="method-example">
+    <h3 class="method-definition"></h3>
+    <pre class="prettyprint lang-curl bash">GET https://api.beta.jidoteki.com/v0/os/list</pre>
+    <h3 class="method-request"></h3>
+    <pre class="prettyprint lang-curl bash">$ curl -X GET https://api.beta.jidoteki.com/v0/os/list \
+-H "X-Auth-Token: 2e0a696ea8746b5daa6e5a6cbb841a34ef7f9090ac2acf5ae2bc87311903ad23" \
+-H "X-Auth-Signature: 998385d8d251f192cc062c19ff23c29a03adcd03d871dabeb5e4795991bfcb4f"
+</pre>
+    <h3 class="method-response"></h3>
+    <pre class="prettyprint lang-curl json">{
+  "centos": {
+    "i386": [
+      {
+        "os_id": "centos-6.4",
+        "os_name": "CentOS 6.4",
+        "os_arch": "i386",
+        "os_iso_source": "http://ftp.jaist.ac.jp/pub/Linux/CentOS/6.4/isos/i386/CentOS-6.4-i386-netinstall.iso",
+        "os_md5_hash": "7cde1479be934ad8463a35f2a3a48a2b",
+        "os_sha256_hash": "1c32d5414559ff54a35b08b1dfb094a5cb0b0586fcb7e2116015f185995dabcc",
+        "os_install_type": "kickstart"
+      }
+    ],
+    "x86_64": [
+      {
+        "os_id": "centos-6.4",
+        "os_name": "CentOS 6.4",
+        "os_arch": "x86_64",
+        "os_iso_source": "http://ftp.jaist.ac.jp/pub/Linux/CentOS/6.4/isos/x86_64/CentOS-6.4-x86_64-netinstall.iso",
+        "os_md5_hash": "bb9af2aea1344597e11070abe6b1fcd3",
+        "os_sha256_hash": "8b3a138e60aaeb172368701637c8b6f7ec39c0cb16978e69caeaff6bc4cfdf1b",
+        "os_install_type": "kickstart"
+      }
+    ]
+  }
+}</pre>
+  </div>
+</div>

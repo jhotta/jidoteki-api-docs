@@ -1,0 +1,48 @@
+
+<div class="method-section">
+  <div class="method-description">
+    <h1 id="errors">Errors and Status Codes</h1>
+    <p>Below you will find a description of the JSON-formatted response for each API request.</p>
+    <table>
+      <caption>Attributes</caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>The type of message returned.<br/><strong>Example: </strong><code>success</code> or <code>error</code></td>
+        </tr>
+        <tr>
+          <td>message</td>
+          <td>A short description of the error.<br/><strong>Example: </strong><code>Unable to authenticate</code></td>
+        </tr>
+        <tr>
+          <td>content</td>
+          <td>This contains additional information regarding the response, such as an access token.<br/><strong>Example: </strong><code>2e0a696ea8746b5daa6e</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="method-example">
+    <h3>HTTP Status Code Summary</h3>
+    <ul>
+      <li>200 OK - Success!</li>
+      <li>201 Created - The request was queued, but not processed yet.</li>
+      <li>400 Bad Request - You're sending invalid data to the API.</li>
+      <li>403 Forbidden - Your request was not authenticated correctly.</li>
+      <li>404 Not Found - The requested URL could not be found.</li>
+      <li>500 Internal Server Error - A server error which is our fault. Sorry.</li>
+    </ul>
+    <h3 class="method-response"></h3>
+    <pre class="prettyprint lang-curl json">{"error":[
+  {
+    "message":"Invalid Request headers",
+    "content":"Please specify a valid token and signature"
+  }]
+}</pre>
+  </div>
+</div>

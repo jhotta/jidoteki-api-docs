@@ -1,0 +1,92 @@
+
+<div class="method-section">
+  <div class="method-description">
+    <h1 id="authentication">Authentication</h1>
+    <p>Authenticating to the Jidoteki API is a 2-step process.</p>
+    <p>
+      First you must generate
+      an HMAC signature for each request, then you must obtain an access token.
+    </p>
+    <p>Each subsequent API request must contain your access token and HMAC signature.</p>
+  </div>
+</div>
+<div class="method-section">
+  <div class="method-description">
+    <h1 id="authentication_step1">Step 1/2: Generating an HMAC signature</h1>
+    <p>Each API request must be accompanied by a signature.</p>
+    <p>
+      To create a signature, you must concatenate the
+      <code>request method</code> and
+      <code>request url</code>, then sign
+      the request using your <code>api key</code> and the HMAC-SHA256 algorithm.
+    </p>
+    <p>The output is an SHA256 hash (signature) which you'll use to obtain an access token.</p>
+  </div>
+  <div class="method-example">
+    <h3>HMAC Signature</h3>
+    <pre class="prettyprint lang-curl bash">REQUEST METHOD: GET
+REQUEST URL: https://api.beta.jidoteki.com/v0/auth/user
+API KEY: 96f1ad9d9407ebdf3603ca6b45ccd89
+STRING TO SIGN: 'GEThttps://api.beta.jidoteki.com/v0/auth/user'
+</pre>
+    <pre class="prettyprint lang-curl bash">$ echo -n \
+  'GEThttps://api.beta.jidoteki.com/v0/auth/user' | \
+  openssl dgst -sha256 \
+  -hmac '96f1ad9d9407ebdf3603ca6b45ccd89'
+  </pre>
+    <h3 class="method-response"></h3>
+    <pre class="prettyprint lang-curl json">e5d2a9353119617d34f8167138d8b7bb4fb0799c2abb0c1388a6ca9dc3a9eb12</pre>
+  </div>
+</div>
+<div class="method-section">
+  <div class="method-description">
+    <h1 id="authentication_step2">Step 2/2: Obtaining an access token</h1>
+    <p>
+      You must obtain a temporary access token prior to making any other API requests.
+      The token expires after 8 hours, but can be revoked at any time.
+    </p>
+    <p>To request a token, you must send your UID and HMAC Signature as HTTP Headers.</p>
+    <table>
+      <caption>Header Parameters</caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Validation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>X-Auth-UID</td>
+          <td><code class="required">required</code><br/>The UID must be exactly 7 characters and alphanumeric.<br/><strong>Example: </strong><code>aecd580</code></td>
+        </tr>
+        <tr>
+          <td>X-Auth-Signature</td>
+          <td><code class="required">required</code><br/>The HMAC Signature must be exactly 64 characters and alphanumeric.<br/><strong>Example: </strong><code>e5d2a9353119617d34f8167138d8b7bb4fb0799c2abb0c1388a6ca9dc3a9eb12</code></td>
+        </tr>
+        <tr>
+          <td>User-Agent</td>
+          <td><code class="optional">optional</code><br/>If supplied, the User-Agent must be less than 128 characters, 
+            can contain any alphanumeric characters, and some special characters.<br/><strong>Accepted characters: </strong><code>_-.#/()@,;</code><br/><strong>Example: </strong><code>curl/7.21.4 (macbook air @ home)</code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="method-example">
+    <h3 class="method-definition"></h3>
+    <pre class="prettyprint lang-curl bash">GET https://beta.jidoteki.com/v0/auth/user</pre>
+    <h3 class="method-request"></h3>
+    <pre class="prettyprint lang-curl bash">$ curl -X GET https://api.beta.jidoteki.com/v0/auth/user \
+--header "X-Auth-UID: aecd580" -H "X-Auth-Signature: \
+e5d2a9353119617d34f8167138d8b7bb4fb0799c2abb0c1388a6ca9dc3a9eb12" \
+--user-agent "curl/7.21.4 (macbook air @ home)"
+</pre>
+    <h3 class="method-response"></h3>
+    <pre class="prettyprint lang-curl json">{"success": [
+  {
+    "message": "Authentication successful",
+    "access_token": "2e0a696ea8746b5daa6e5a6cbb841a34ef7f9090ac2acf5ae2bc87311903ad23"
+  }]
+}</pre>
+  </div>
+</div>
