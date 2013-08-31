@@ -8,7 +8,7 @@ A web interface for the API is also available at: http://jidoteki.com
 
 ## Docs
 
-These pages can be found at: https://docs.jidoteki.com/api
+These pages can be found at: https://docs.jidoteki.com
 
 ## Goal
 
