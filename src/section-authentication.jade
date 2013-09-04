@@ -23,19 +23,19 @@
   .method-example
     h3 HMAC Signature
     pre(class="prettyprint lang-curl bash").
-      REQUEST METHOD: GET
+      REQUEST METHOD: POST
       REQUEST URL: https://api.beta.jidoteki.com/v0/auth/user
       API KEY: 96f1ad9d9407ebdf3603ca6b45ccd89
-      STRING TO SIGN: 'GEThttps://api.beta.jidoteki.com/v0/auth/user'
+      STRING TO SIGN: 'POSThttps://api.beta.jidoteki.com/v0/auth/user'
 
     pre(class="prettyprint lang-curl bash").
       $ echo -n \
-        'GEThttps://api.beta.jidoteki.com/v0/auth/user' | \
+        'POSThttps://api.beta.jidoteki.com/v0/auth/user' | \
         openssl dgst -sha256 \
         -hmac '96f1ad9d9407ebdf3603ca6b45ccd89'
 
     h3.method-response
-    pre(class="prettyprint lang-curl json") e5d2a9353119617d34f8167138d8b7bb4fb0799c2abb0c1388a6ca9dc3a9eb12
+    pre(class="prettyprint lang-curl json") 8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5
 
 .method-section
   .method-description
@@ -69,7 +69,7 @@
             | The HMAC Signature must be exactly 64 characters and alphanumeric.
             br
             strong Example: 
-            code e5d2a9353119617d34f8167138d8b7bb4fb0799c2abb0c1388a6ca9dc3a9eb12
+            code 8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5
         tr
           td User-Agent
           td
@@ -87,13 +87,13 @@
   .method-example
     h3.method-definition
     pre(class="prettyprint lang-curl bash")
-      | GET https://beta.jidoteki.com/v0/auth/user
+      | POST https://beta.jidoteki.com/v0/auth/user
 
     h3.method-request
     pre(class="prettyprint lang-curl bash").
-      $ curl -X GET https://api.beta.jidoteki.com/v0/auth/user \
+      $ curl -X POST https://api.beta.jidoteki.com/v0/auth/user \
       --header "X-Auth-UID: aecd580" -H "X-Auth-Signature: \
-      e5d2a9353119617d34f8167138d8b7bb4fb0799c2abb0c1388a6ca9dc3a9eb12" \
+      8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5" \
       --user-agent "curl/7.21.4 (macbook air @ home)"
 
     h3.method-response
