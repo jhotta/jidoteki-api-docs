@@ -9,7 +9,7 @@
 
   .method-example
     h3 HMAC Signature
-    pre(class="prettyprint lang-curl bash").
+    pre(class="prettyprint lang-curl lang-coffeescript lang-javascript bash").
       REQUEST METHOD: GET
       REQUEST URL: https://api.beta.jidoteki.com/v0/os/list
       API KEY: 96f1ad9d9407ebdf3603ca6b45ccd89
@@ -21,8 +21,16 @@
         openssl dgst -sha256 \
         -hmac '96f1ad9d9407ebdf3603ca6b45ccd89'
 
+    pre(class="prettyprint lang-coffeescript coffeescript").
+      coffee> jidoteki = require 'jidoteki'
+      coffee> jidoteki.makeHMAC 'GEThttps://api.beta.jidoteki.com/v0/os/list', (cb) -> console.log cb
+
+    pre(class="prettyprint lang-javascript javascript").
+      > jidoteki = require('jidoteki');
+      > jidoteki.makeHMAC('GEThttps://api.beta.jidoteki.com/v0/os/list', function(cb) { console.log(cb); });
+
     h3.method-response
-    pre(class="prettyprint lang-curl json") 998385d8d251f192cc062c19ff23c29a03adcd03d871dabeb5e4795991bfcb4f
+    pre(class="prettyprint lang-curl lang-coffeescript lang-javascript json") 998385d8d251f192cc062c19ff23c29a03adcd03d871dabeb5e4795991bfcb4f
 
 .method-section
   .method-description
@@ -60,7 +68,7 @@
 
   .method-example
     h3.method-definition
-    pre(class="prettyprint lang-curl bash")
+    pre(class="prettyprint lang-curl lang-coffeescript lang-javascript bash")
       | GET https://api.beta.jidoteki.com/v0/os/list
 
     h3.method-request
@@ -69,8 +77,16 @@
       -H "X-Auth-Token: 2e0a696ea8746b5daa6e5a6cbb841a34ef7f9090ac2acf5ae2bc87311903ad23" \
       -H "X-Auth-Signature: 998385d8d251f192cc062c19ff23c29a03adcd03d871dabeb5e4795991bfcb4f"
 
+    pre(class="prettyprint lang-coffeescript coffeescript").
+      coffee> jidoteki = require 'jidoteki'
+      coffee> jidoteki.makeRequest 'GET', '/os/list', (data) -> console.log data
+
+    pre(class="prettyprint lang-javascript javascript").
+      > jidoteki = require('jidoteki');
+      > jidoteki.makeRequest('GET', '/os/list', function(data){ console.log(data); });
+
     h3.method-response
-    pre(class="prettyprint lang-curl json").
+    pre(class="prettyprint lang-curl lang-coffeescript lang-javascript json").
       {
         "centos": {
           "i386": [

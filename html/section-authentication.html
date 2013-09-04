@@ -9,6 +9,10 @@
     </p>
     <p>Each subsequent API request must contain your access token and HMAC signature.</p>
   </div>
+  <div class="method-example">
+    <h3>Authentication note:</h3>If you're using one of our official client libraries, you DO NOT need to perform Step 1 & Step 2.
+    You can simply skip straight to making requests, but make sure your USERID and APIKEY are set.
+  </div>
 </div>
 <div class="method-section">
   <div class="method-description">
@@ -24,7 +28,7 @@
   </div>
   <div class="method-example">
     <h3>HMAC Signature</h3>
-    <pre class="prettyprint lang-curl bash">REQUEST METHOD: POST
+    <pre class="prettyprint lang-curl lang-coffeescript lang-javascript bash">REQUEST METHOD: POST
 REQUEST URL: https://api.beta.jidoteki.com/v0/auth/user
 API KEY: 96f1ad9d9407ebdf3603ca6b45ccd89
 STRING TO SIGN: 'POSThttps://api.beta.jidoteki.com/v0/auth/user'
@@ -34,8 +38,14 @@ STRING TO SIGN: 'POSThttps://api.beta.jidoteki.com/v0/auth/user'
   openssl dgst -sha256 \
   -hmac '96f1ad9d9407ebdf3603ca6b45ccd89'
   </pre>
+    <pre class="prettyprint lang-coffeescript coffeescript">coffee> jidoteki = require 'jidoteki'
+coffee> jidoteki.makeHMAC 'POSThttps://api.beta.jidoteki.com/v0/auth/user', (cb) -> console.log cb
+</pre>
+    <pre class="prettyprint lang-javascript javascript">> jidoteki = require('jidoteki');
+> jidoteki.makeHMAC('POSThttps://api.beta.jidoteki.com/v0/auth/user', function(cb) { console.log(cb); });
+</pre>
     <h3 class="method-response"></h3>
-    <pre class="prettyprint lang-curl json">8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5</pre>
+    <pre class="prettyprint lang-curl lang-coffeescript lang-javascript json">8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5</pre>
   </div>
 </div>
 <div class="method-section">
@@ -74,15 +84,25 @@ STRING TO SIGN: 'POSThttps://api.beta.jidoteki.com/v0/auth/user'
   </div>
   <div class="method-example">
     <h3 class="method-definition"></h3>
-    <pre class="prettyprint lang-curl bash">POST https://beta.jidoteki.com/v0/auth/user</pre>
+    <pre class="prettyprint lang-curl lang-coffeescript lang-javascript bash">POST https://beta.jidoteki.com/v0/auth/user</pre>
     <h3 class="method-request"></h3>
     <pre class="prettyprint lang-curl bash">$ curl -X POST https://api.beta.jidoteki.com/v0/auth/user \
 --header "X-Auth-UID: aecd580" -H "X-Auth-Signature: \
 8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5" \
 --user-agent "curl/7.21.4 (macbook air @ home)"
 </pre>
+    <pre class="prettyprint lang-coffeescript coffeescript">coffee> jidoteki = require 'jidoteki'
+coffee> jidoteki.settings.userid = 'aecd580'
+coffee> jidoteki.settings.apikey = '96f1ad9d9407ebdf3603ca6b45ccd89'
+coffee> jidoteki.getToken (result) -> console.log result
+</pre>
+    <pre class="prettyprint lang-javascript javascript">> jidoteki = require('jidoteki');
+> jidoteki.settings.userid = 'aecd580';
+> jidoteki.settings.apikey = '96f1ad9d9407ebdf3603ca6b45ccd89';
+> jidoteki.getToken(function(result) { console.log(result); });
+</pre>
     <h3 class="method-response"></h3>
-    <pre class="prettyprint lang-curl json">{"success":
+    <pre class="prettyprint lang-curl lang-coffeescript lang-javascript json">{"success":
   {
     "message": "Authentication successful",
     "access_token": "2e0a696ea8746b5daa6e5a6cbb841a34ef7f9090ac2acf5ae2bc87311903ad23"
