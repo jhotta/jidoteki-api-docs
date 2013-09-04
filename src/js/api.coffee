@@ -77,6 +77,9 @@ appendSections = (curFile) ->
     scrollToSectionListener()
     if window.location.hash isnt ''
       scrollToSection window.location.hash if window.location.hash isnt ''
+    # By default we should hide ALL the languages except the first one
+    $('pre.prettyprint').hide()
+    $("pre.lang-#{languagesArray[0]}").show()
 
 # Change the highlighted menu section when scrolling
 scrolling = {}
