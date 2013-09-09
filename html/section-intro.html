@@ -30,6 +30,10 @@
         <td>All timestamps are returned as UNIX timestamps in UTC, with 6 digit precision (microseconds).<br/><strong>Example:</strong> <code>1363414483.832038</code></td>
       </tr>
       <tr>
+        <td>API VERSION</td>
+        <td>The API VERSION is currently set to 0. It must be specified as a header in every request.<br/><strong>Example:</strong> <code>X-Api-Version: 0</code></td>
+      </tr>
+      <tr>
         <td>CONTENT-TYPE</td>
         <td>The content-type for all requests is a standard JSON MIME media type.<br/><strong>Example:</strong> <code>application/json</code></td>
       </tr>
@@ -68,17 +72,17 @@
     </table>
   </div>
   <div class="method-example">
-    <h3>API Endpoint</h3>https://beta.jidoteki.com/v0
+    <h3>API Endpoint</h3>https://beta.jidoteki.com
     <h4>Summary of Resource URLs</h4>
     <ul>
       <li>POST /auth/user</li>
       <li>GET /os/list</li>
-      <li>POST /server/create</li>
-      <li>GET /server/list</li>
-      <li>GET /server/details/{SERVER_ID}</li>
-      <li>DELETE /server/delete/{SERVER_ID}</li>
-      <li>GET /server/stop/{SERVER_ID}</li>
-      <li>POST /server/provision</li>
+      <li>POST /image/create</li>
+      <li>GET /image/list</li>
+      <li>GET /image/details/{SERVER_ID}</li>
+      <li>DELETE /image/delete/{SERVER_ID}</li>
+      <li>GET /image/stop/{SERVER_ID}</li>
+      <li>POST /image/provision</li>
       <li>GET /provisioning/list</li>
       <li>GET /settings/images</li>
       <li>GET /settings/provision</li>

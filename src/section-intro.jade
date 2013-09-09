@@ -28,6 +28,11 @@
           br
           <strong>Example:</strong> <code>1363414483.832038</code>
       tr
+        td API VERSION
+        td The API VERSION is currently set to 0. It must be specified as a header in every request.
+          br
+          <strong>Example:</strong> <code>X-Api-Version: 0</code>
+      tr
         td CONTENT-TYPE
         td The content-type for all requests is a standard JSON MIME media type.
           br
@@ -66,18 +71,18 @@
   .method-example
 
     h3 API Endpoint
-    | https://beta.jidoteki.com/v0
+    | https://beta.jidoteki.com
 
     h4 Summary of Resource URLs
     ul
       li POST /auth/user
       li GET /os/list
-      li POST /server/create
-      li GET /server/list
-      li GET /server/details/{SERVER_ID}
-      li DELETE /server/delete/{SERVER_ID}
-      li GET /server/stop/{SERVER_ID}
-      li POST /server/provision
+      li POST /image/create
+      li GET /image/list
+      li GET /image/details/{SERVER_ID}
+      li DELETE /image/delete/{SERVER_ID}
+      li GET /image/stop/{SERVER_ID}
+      li POST /image/provision
       li GET /provisioning/list
       li GET /settings/images
       li GET /settings/provision

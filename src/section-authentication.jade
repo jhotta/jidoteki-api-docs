@@ -29,23 +29,23 @@
     h3 HMAC Signature
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript bash").
       REQUEST METHOD: POST
-      REQUEST URL: https://api.beta.jidoteki.com/v0/auth/user
+      REQUEST URL: https://api.beta.jidoteki.com/auth/user
       API KEY: 96f1ad9d9407ebdf3603ca6b45ccd89
-      STRING TO SIGN: 'POSThttps://api.beta.jidoteki.com/v0/auth/user'
+      STRING TO SIGN: 'POSThttps://api.beta.jidoteki.com/auth/user'
 
     pre(class="prettyprint lang-curl bash").
       $ echo -n \
-        'POSThttps://api.beta.jidoteki.com/v0/auth/user' | \
+        'POSThttps://api.beta.jidoteki.com/auth/user' | \
         openssl dgst -sha256 \
         -hmac '96f1ad9d9407ebdf3603ca6b45ccd89'
 
     pre(class="prettyprint lang-coffeescript coffeescript").
       coffee> jidoteki = require 'jidoteki'
-      coffee> jidoteki.makeHMAC 'POSThttps://api.beta.jidoteki.com/v0/auth/user', (cb) -> console.log cb
+      coffee> jidoteki.makeHMAC 'POSThttps://api.beta.jidoteki.com/auth/user', (cb) -> console.log cb
 
     pre(class="prettyprint lang-javascript javascript").
       > jidoteki = require('jidoteki');
-      > jidoteki.makeHMAC('POSThttps://api.beta.jidoteki.com/v0/auth/user', function(cb) { console.log(cb); });
+      > jidoteki.makeHMAC('POSThttps://api.beta.jidoteki.com/auth/user', function(cb) { console.log(cb); });
 
     h3.method-response
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript json") 8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5
@@ -84,6 +84,15 @@
             strong Example: 
             code 8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5
         tr
+          td X-Api-Version
+          td
+            code.required required
+            br
+            | The API version is a single digit number.
+            br
+            strong Example:
+            code 0
+        tr
           td User-Agent
           td
             code.optional optional
@@ -100,11 +109,12 @@
   .method-example
     h3.method-definition
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript bash")
-      | POST https://beta.jidoteki.com/v0/auth/user
+      | POST https://beta.jidoteki.com/auth/user
 
     h3.method-request
     pre(class="prettyprint lang-curl bash").
-      $ curl -X POST https://api.beta.jidoteki.com/v0/auth/user \
+      $ curl -X POST https://api.beta.jidoteki.com/auth/user \
+      --header "X-Api-Version: 0" \
       --header "X-Auth-UID: aecd580" -H "X-Auth-Signature: \
       8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5" \
       --user-agent "curl/7.21.4 (macbook air @ home)"
