@@ -75,7 +75,7 @@ coffee> jidoteki.makeHMAC 'POSThttps://api.beta.jidoteki.com/auth/user', (cb) ->
         </tr>
         <tr>
           <td>X-Api-Version</td>
-          <td><code class="required">required</code><br/>The API version is a single digit number.<br/><strong>Example:</strong><code>0</code></td>
+          <td><code class="required">required</code><br/>The API version is a single digit number.<br/><strong>Example: </strong><code>1</code></td>
         </tr>
         <tr>
           <td>User-Agent</td>
@@ -91,7 +91,7 @@ coffee> jidoteki.makeHMAC 'POSThttps://api.beta.jidoteki.com/auth/user', (cb) ->
     <pre class="prettyprint lang-curl lang-coffeescript lang-javascript bash">POST https://api.beta.jidoteki.com/auth/user</pre>
     <h3 class="method-request"></h3>
     <pre class="prettyprint lang-curl bash">$ curl -X POST https://api.beta.jidoteki.com/auth/user \
---header "X-Api-Version: 0" \
+--header "X-Api-Version: 1" \
 --header "X-Auth-UID: aecd580" -H "X-Auth-Signature: \
 8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5" \
 --user-agent "curl/7.21.4 (macbook air @ home)"
