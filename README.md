@@ -8,7 +8,7 @@ A web interface for the API is also available at: http://jidoteki.com
 
 ## Version
 
-This API documentation is at version: `1.0.0`
+This API documentation is at version: `1.0.1`
 
 ## Docs
 
