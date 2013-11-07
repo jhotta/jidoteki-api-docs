@@ -17,6 +17,7 @@ body {
 
 #header h1 {
   background-color: #F0F2F6;
+  height: 42px;
 }
 
 #header h1 a {
@@ -33,6 +34,11 @@ body {
   background: -webkit-linear-gradient(#3E4145, #292e33);
   background-image: linear-gradient(#3E4145, #292e33);
   box-shadow: rgba(0, 0, 0, 0.45098) 0px 1px 2px 0px;
+}
+
+#language a.gengo {
+  float: left;
+  line-height: normal;
 }
 
 #menu {
@@ -124,9 +130,11 @@ th:first-child {
 	width: 100px;
 }
 
+#language a.gengo,
 #language button {
   font-size: 0.8em;
   font-weight: normal;
+  font-family: "Lucida Grande";
   color: #DAE4F2;
   text-transform: uppercase;
   padding: 5px 15px;
@@ -141,6 +149,7 @@ th:first-child {
 	box-shadow: rgba(255, 255, 255, 0.0980392) 0px 1px 0px 0px, #000 0px 1px 0px 0px inset, #25282E 0px -1px 0px 0px inset;
 }
 
+#language a.selected,
 #language button.selected {
   color: #E3E3E3;
 	background: -webkit-linear-gradient(#14171A, #2A2F34);
@@ -166,7 +175,6 @@ th:first-child {
 #menu ul li span.children a {
   font-weight: normal;
   padding: 4px 30px;
-  display: normal;
 }
 
 #menu ul li a:hover,

@@ -38,7 +38,7 @@
   };
 
   loadLeftMenu = function() {
-    return $('#menu').load('menu.html');
+    return $('#menu').load(gengo+'/menu.html');
   };
 
   scrollToSection = function(href) {
@@ -79,7 +79,7 @@
   sections = {};
 
   loadFile = function(file, callback) {
-    return $(this).load("section-" + file + ".html", function(response) {
+    return $(this).load(gengo + "/section-" + file + ".html", function(response) {
       sections[file] = response;
       console.log("Loaded file: section-" + file + ".html");
       return callback(response);

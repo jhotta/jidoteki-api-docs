@@ -12,6 +12,7 @@ html(lang='en')
       // each file will be loaded in the order they appear in this array
       sectionsArray = ['intro','errors','authentication','os'];
       languagesArray = ['curl','coffeescript','javascript'];
+      gengo = 'en';
   body
     #header
       h1
@@ -20,6 +21,8 @@ html(lang='en')
           li <iframe src="http://ghbtns.com/github-btn.html?user=unscramble&repo=jidoteki-api-docs&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
           li <iframe src="http://ghbtns.com/github-btn.html?user=unscramble&repo=jidoteki-api-docs&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
       p#language
+        a(href='api_en.html' class='gengo selected' title='English') English
+        a(href='api_ja.html' class='gengo' title='日本語') 日本語
 
     // load from 'menu.html'
     #menu

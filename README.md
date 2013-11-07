@@ -37,7 +37,7 @@ create easy/simple API documentation the way Stripe has.
 
 If you want to use this documentation for your own API, you'll need to edit:
 
-* `api.html`: Modify the `sectionsArray` and `languagesArray` to match your API
+* `api_<lang>.html`: Modify the `sectionsArray` and `languagesArray` to match your API
 * `menu.html`: Contains the left menu and sub-menus. It's just plain HTML
 * `section-*.html`: Create one page for each section found in the JS `sectionArray`
 
@@ -58,7 +58,7 @@ Those files are located in the `src/` directory.
 Make sure you have access to the following commands: `coffee`, `jade`. If you don't, just `npm install <those things you're missing>`.
 
 * Compiling CoffeeScript files automatically: `coffee -o html -w -c src`
-* Compiling Jade files automatically: `jade -o html -P -w src/*.jade`
+* Compiling Jade files automatically: `jade -P -o html src/*.jade && jade -P -o html/en src/en/*.jade`
 
 ## Testing / Issues
 
@@ -75,7 +75,6 @@ load files on-the-fly. Chrome disabled this by default.
 ## Todo
 
 * Auto-creation of the left menu (`menu.html` page).
-* Support for pages in multiple languages (ex: French, Japanese).
 
 ## Bugs
 
