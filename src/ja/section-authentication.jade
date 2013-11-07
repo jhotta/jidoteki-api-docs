@@ -1,0 +1,141 @@
+.method-section
+  .method-description
+
+    h1#authentication Authentication
+    p Authenticating to the Jidoteki API is a 2-step process.
+    p.
+      First you must generate
+      an HMAC signature for each request, then you must obtain an access token.
+    p Each subsequent API request must contain your access token and HMAC signature.
+
+  .method-example
+    h3 Authentication note:
+    | If you're using one of our official client libraries, you DO NOT need to perform Step 1 & Step 2.
+    | You can simply skip straight to making requests, but make sure your USERID and APIKEY are set.
+
+.method-section
+  .method-description
+
+    h1#authentication_step1 Step 1/2: Generating an HMAC signature
+    p Each API request must be accompanied by a signature.
+    p.
+      To create a signature, you must concatenate the
+      <code>request method</code> and
+      <code>request url</code>, then sign
+      the request using your <code>api key</code> and the HMAC-SHA256 algorithm.
+    p The output is an SHA256 hash (signature) which you'll use to obtain an access token.
+
+  .method-example
+    h3 HMAC Signature
+    pre(class="prettyprint lang-curl lang-coffeescript lang-javascript bash").
+      REQUEST METHOD: POST
+      REQUEST URL: https://api.beta.jidoteki.com/auth/user
+      API KEY: 96f1ad9d9407ebdf3603ca6b45ccd89
+      STRING TO SIGN: 'POSThttps://api.beta.jidoteki.com/auth/user'
+
+    pre(class="prettyprint lang-curl bash").
+      $ echo -n \
+        'POSThttps://api.beta.jidoteki.com/auth/user' | \
+        openssl dgst -sha256 \
+        -hmac '96f1ad9d9407ebdf3603ca6b45ccd89'
+
+    pre(class="prettyprint lang-coffeescript coffeescript").
+      coffee> jidoteki = require 'jidoteki'
+      coffee> jidoteki.makeHMAC 'POSThttps://api.beta.jidoteki.com/auth/user', (cb) -> console.log cb
+
+    pre(class="prettyprint lang-javascript javascript").
+      > jidoteki = require('jidoteki');
+      > jidoteki.makeHMAC('POSThttps://api.beta.jidoteki.com/auth/user', function(cb) { console.log(cb); });
+
+    h3.method-response
+    pre(class="prettyprint lang-curl lang-coffeescript lang-javascript json") 8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5
+
+.method-section
+  .method-description
+
+    h1#authentication_step2 Step 2/2: Obtaining an access token
+    p.
+      You must obtain a temporary access token prior to making any other API requests.
+      The token expires after 8 hours, but can be revoked at any time.
+    p To request a token, you must send your UID and HMAC Signature as HTTP Headers.
+    table
+      caption Header Parameters
+      thead
+        tr
+          th Name
+          th Validation
+      tbody
+        tr
+          td X-Auth-UID
+          td
+            code.required required
+            br
+            | The UID must be exactly 7 characters and alphanumeric.
+            br
+            strong Example: 
+            code aecd580
+        tr
+          td X-Auth-Signature
+          td
+            code.required required
+            br
+            | The HMAC Signature must be exactly 64 characters and alphanumeric.
+            br
+            strong Example: 
+            code 8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5
+        tr
+          td X-Api-Version
+          td
+            code.required required
+            br
+            | The API version is a single digit number.
+            br
+            strong Example: 
+            code 1
+        tr
+          td User-Agent
+          td
+            code.optional optional
+            br
+            | If supplied, the User-Agent must be less than 128 characters, 
+            | can contain any alphanumeric characters, and some special characters.
+            br
+            strong Accepted characters: 
+            code _-.#/()@,;
+            br
+            strong Example: 
+            code curl/7.21.4 (macbook air @ home)
+
+  .method-example
+    h3.method-definition
+    pre(class="prettyprint lang-curl lang-coffeescript lang-javascript bash")
+      | POST https://api.beta.jidoteki.com/auth/user
+
+    h3.method-request
+    pre(class="prettyprint lang-curl bash").
+      $ curl -X POST https://api.beta.jidoteki.com/auth/user \
+      --header "X-Api-Version: 1" \
+      --header "X-Auth-UID: aecd580" -H "X-Auth-Signature: \
+      8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5" \
+      --user-agent "curl/7.21.4 (macbook air @ home)"
+
+    pre(class="prettyprint lang-coffeescript coffeescript").
+      coffee> jidoteki = require 'jidoteki'
+      coffee> jidoteki.settings.userid = 'aecd580'
+      coffee> jidoteki.settings.apikey = '96f1ad9d9407ebdf3603ca6b45ccd89'
+      coffee> jidoteki.getToken (result) -> console.log result
+
+    pre(class="prettyprint lang-javascript javascript").
+      > jidoteki = require('jidoteki');
+      > jidoteki.settings.userid = 'aecd580';
+      > jidoteki.settings.apikey = '96f1ad9d9407ebdf3603ca6b45ccd89';
+      > jidoteki.getToken(function(result) { console.log(result); });
+
+    h3.method-response
+    pre(class="prettyprint lang-curl lang-coffeescript lang-javascript json").
+      {"success":
+        {
+          "message": "Authentication successful",
+          "access_token": "2e0a696ea8746b5daa6e5a6cbb841a34ef7f9090ac2acf5ae2bc87311903ad23"
+        }
+      }

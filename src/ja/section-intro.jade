@@ -1,0 +1,90 @@
+.method-section
+  .method-description
+  
+    h1#intro API Reference (incomplete)
+    code.required Notice: This API documentation is incomplete.
+    p.
+      The <a href="http://jidoteki.com">Jidoteki</a> beta API is a
+      <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>
+      API which allows you to offload and automate your operating system installations.
+      The API is still in beta, so this documentation will continue to be updated as new
+      features are added.
+
+    h2 Getting started
+    p Below you'll find some information and common keywords found throughout this documentation.
+    table
+      tr
+        th Keyword
+        th Description
+      tr
+        td JSON
+        td All results are returned as <a href="http://www.json.org/">JSON</a> strings.
+      tr
+        td HTTPS
+        td For security purposes, all API requests must be made over <a href="http://en.wikipedia.org/wiki/HTTP_Secure">HTTPS</a>.
+      tr
+        td TIMESTAMPS
+        td All timestamps are returned as UNIX timestamps in UTC, with 6 digit precision (microseconds).
+          br
+          <strong>Example:</strong> <code>1363414483.832038</code>
+      tr
+        td API VERSION
+        td The API VERSION is currently set to 1. It must be specified as a header in every request.
+          br
+          <strong>Example:</strong> <code>X-Api-Version: 1</code>
+      tr
+        td CONTENT-TYPE
+        td The content-type for all requests is a standard JSON MIME media type.
+          br
+          <strong>Example:</strong> <code>application/json</code>
+      tr
+        td PARAMETERS
+        td Request parameters must be sent as a JSON-formatted string.
+          br
+          <strong>Example:</strong> <code>{"os_id":"debian-7.1.0"}</code>
+      tr
+        td HMAC
+        td Each API request must contain an HMAC (signature) of the entire request. Details are in the Authentication section.
+      tr
+        td API KEY
+        td A user's secret API KEY is used to generate each HMAC signature.
+      tr
+        td ACCESS TOKENS
+        td An access token is a temporary unique identification string sent as an HTTP header. It expires after 8 hours.
+      tr
+        td USER-AGENT
+        td You can use almost any HTTP header User-Agent you want, limited to 128 characters.
+          br
+          <strong>Example:</strong> <code>curl/7.21.4 (macbook air @ home)</code>
+      tr
+        td IPv6
+        td The API is accessible over IPv4 and IPv6.
+          br
+          <strong>Example:</strong> <code>curl --ipv6</code>
+      tr
+        td SHA-256
+        td The hashing algorithm used to generate an HMAC signature is SHA-256.
+      tr
+        td UID
+        td When requesting an ACCESS TOKEN, you need to supply your UID (User ID) which is a 7-character alphanumeric string.
+
+  .method-example
+
+    h3 API Endpoint
+    | https://api.beta.jidoteki.com
+
+    h4 Summary of Resource URLs
+    ul
+      li POST /auth/user
+      li GET /os/list
+      li POST /image/create
+      li GET /image/list
+      li GET /image/details/{SERVER_ID}
+      li DELETE /image/delete/{SERVER_ID}
+      li GET /image/stop/{SERVER_ID}
+      li POST /image/provision
+      li POST /image/export
+      li GET /provisioning/list
+      li GET /downloads/list
+      li GET /settings/images
+      li GET /settings/provision
