@@ -60,6 +60,12 @@ Make sure you have access to the following commands: `coffee`, `jade`. If you do
 * Compiling CoffeeScript files automatically: `coffee -o html -w -c src`
 * Compiling Jade files automatically: `jade -P -o html src/*.jade && jade -P -o html/en src/en/*.jade`
 
+### Adding another language
+
+If you want to have documentation in French, Japanese, or something else, just duplicate the `src/en` directory. Also duplicate the `api_en.jade` file. Modify the `gengo` variable in the `api_yourlang.jade` file and add a language link in the `#language` list. Of course don't forget to modify the `src/yourlang` templates.
+
+To update the Jade files for the new language, you can run: `jade -P -o html/en src/yourlang/*.jade`
+
 ## Testing / Issues
 
 Viewing/testing these pages locally works well in Safari on Mac OS X, but
