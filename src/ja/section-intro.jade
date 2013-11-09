@@ -1,7 +1,9 @@
 .method-section
   .method-description
   
+    //-h1#intro API Reference (incomplete)
     h1#intro API レファレンス (作業中)
+    //-code.required Notice: This API documentation is incomplete.
     code.required 注意: このAPIドキュメントは作業中です。
     p.
       The <a href="http://jidoteki.com">Jidoteki</a> beta API is a
@@ -10,18 +12,24 @@
       The API is still in beta, so this documentation will continue to be updated as new
       features are added.
 
-    h2 Getting started
-    p Below you'll find some information and common keywords found throughout this documentation.
+    //-h2 Getting started
+    h2 APIドキュメント内の重要単語の解説
+    //-p Below you'll find some information and common keywords found throughout this documentation.
+    p 以下にAPIドキュメント全体を通し、頻繁に出現するキーワードの解説をします。
     table
       tr
-        th Keyword
-        th Description
+        //-th Keyword
+        th キーワード
+        //-th Description
+        th 詳細
       tr
         td JSON
-        td All results are returned as <a href="http://www.json.org/">JSON</a> strings.
+        //-td All results are returned as <a href="http://www.json.org/">JSON</a> strings.
+        td 全てのAPIリクエストの結果は、<a href="http://www.json.org/">JSON</a>文字列の形式。
       tr
         td HTTPS
-        td For security purposes, all API requests must be made over <a href="http://en.wikipedia.org/wiki/HTTP_Secure">HTTPS</a>.
+        //-td For security purposes, all API requests must be made over <a href="http://en.wikipedia.org/wiki/HTTP_Secure">HTTPS</a>.
+        td セキュリティーの観点から、APIリクエストは、<a href="http://edn.wikipedia.org/wiki/HTTP_Secure">HTTPS</a>通信のみ対応。
       tr
         td TIMESTAMPS
         td All timestamps are returned as UNIX timestamps in UTC, with 6 digit precision (microseconds).

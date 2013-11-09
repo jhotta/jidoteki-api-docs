@@ -1,14 +1,20 @@
 .method-section
   .method-description
 
+    //-h1#os Operating Systems
     h1#os オペレーティングシステム
+    //-p Jidoteki provides a choice of 4 different Operating Systems: CentOS, Debian, FreeBSD, and Windows.
     p Jidotekiでは、4種類のOSを提供しています: CentOS, Debian, FreeBSD, and Windows.
+    //-p The full list of available Operating Systems is available on 
+    //-  a(href='https://github.com/unscramble/jidoteki-os-templates') GitHub
+    //-  |  in the <code>os_list.json</code> file. You can also query our API to fetch this list.
     p 現時点で提供されている全てのOSは、
       a(href='https://github.com/unscramble/jidoteki-os-templates') GitHub
-      |の <code>os_list.json</code> ファイルで確認することができます。 又、APIにクエリーを送信することで利用可能なOSのリストを取得することもできます。
+      | の<code>os_list.json</code> ファイルで確認することができます。 又、APIにクエリーを送信することで利用可能なOSのリストを取得することもできます。
 
   .method-example
-    h3 HMAC Signature
+    //-h3 HMAC Signature
+    h3 HMAC署名
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript bash").
       REQUEST METHOD: GET
       REQUEST URL: https://api.beta.jidoteki.com/os/list
@@ -29,30 +35,40 @@
       > jidoteki = require('jidoteki');
       > jidoteki.makeHMAC('GEThttps://api.beta.jidoteki.com/os/list', function(cb) { console.log(cb); });
 
-    h3.method-response
+    //-h3.method-response
+    h3 リスポンス例:
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript json") 998385d8d251f192cc062c19ff23c29a03adcd03d871dabeb5e4795991bfcb4f
 
 .method-section
   .method-description
-
+    //-h1#os_list List available Operating Systems
     h1#os_list 利用可能なOSのリスティング
+    //-p.
+    //-  This request allows you to get a list of Operating Systems available for installation.
+    //-  The <code>os_id</code> and <code>os_arch</code> are used for creating virtual images, while the other
+    //-  information is only there for reference.
     p.
-      This request allows you get a list of Operating Systems available for installation.
-      The <code>os_id</code> and <code>os_arch</code> are used for creating virtual images, while the other
-      information is only there for reference.
+      このリクエストによって、インストールすることのできるOSのリストを取得することができます。
+      <code>os_id</code>と<code>os_arch</code>は、仮想マシンイメージを作成するのに利用します。
+      while information is only there for reference.
+
     table
-      caption Header Parameters
+      //-caption Header Parameters
+      caption ヘッダーパラメーター
       thead
         tr
-          th Name
-          th Validation
+          //-th Name
+          th 名前
+          //-th Validation
+          th バリデーション
       tbody
         tr
           td X-Auth-Token
           td
             code.required required
             br
-            | The Token must be exactly 64 characters and alphanumeric.
+            //-| The Token must be exactly 64 characters and alphanumeric.
+            | トークンは、英数64文字。
             br
             strong Example: 
             code 2e0a696ea8746b5daa6e5a6cbb841a34ef7f9090ac2acf5ae2bc87311903ad23
@@ -61,7 +77,8 @@
           td
             code.required required
             br
-            | The HMAC Signature must be exactly 64 characters and alphanumeric.
+            //-| The HMAC Signature must be exactly 64 characters and alphanumeric.
+            | HMAC署名は、英数64文字。
             br
             strong Example: 
             code 998385d8d251f192cc062c19ff23c29a03adcd03d871dabeb5e4795991bfcb4f
@@ -70,7 +87,8 @@
           td
             code.required required
             br
-            | The API version is a single digit number.
+            //-| The API version is a single digit number.
+            | APIのバージョンは、数字１桁。
             br
             strong Example: 
             code 1
@@ -80,7 +98,8 @@
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript bash")
       | GET https://api.beta.jidoteki.com/os/list
 
-    h3.method-request
+    //-h3.method-request
+    h3 リクエスト例:
     pre(class="prettyprint lang-curl bash").
       $ curl -X GET https://api.beta.jidoteki.com/os/list \
       -H "X-Api-Version: 1" \
@@ -95,7 +114,8 @@
       > jidoteki = require('jidoteki');
       > jidoteki.makeRequest('GET', '/os/list', function(data){ console.log(data); });
 
-    h3.method-response
+    //-h3.method-response
+    h3 リスポンス例:
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript json").
       {
         "centos": {

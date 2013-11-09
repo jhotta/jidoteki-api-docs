@@ -1,6 +1,7 @@
 .method-section
   .method-description
 
+    //-h1#authentication Authentication
     h1#authentication APIの認証方法
     p Authenticating to the Jidoteki API is a 2-step process.
     p.
@@ -9,9 +10,12 @@
     p Each subsequent API request must contain your access token and HMAC signature.
 
   .method-example
-    h3 Authentication note:
-    | If you're using one of our official client libraries, you DO NOT need to perform Step 1 & Step 2.
-    | You can simply skip straight to making requests, but make sure your USERID and APIKEY are set.
+    //-h3 Authentication note:
+    h3 認証方法に関する注意:
+    //-| If you're using one of our official client libraries, you DO NOT need to perform Step 1 & Step 2.
+      | 
+    //-| You can simply skip straight to making requests, but make sure your USERID and APIKEY are set.
+      |
 
 .method-section
   .method-description
@@ -26,7 +30,7 @@
     p The output is an SHA256 hash (signature) which you'll use to obtain an access token.
 
   .method-example
-    h3 HMAC Signature
+    h3 HMAC署名
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript bash").
       REQUEST METHOD: POST
       REQUEST URL: https://api.beta.jidoteki.com/auth/user
@@ -47,7 +51,8 @@
       > jidoteki = require('jidoteki');
       > jidoteki.makeHMAC('POSThttps://api.beta.jidoteki.com/auth/user', function(cb) { console.log(cb); });
 
-    h3.method-response
+    //h3.method-response
+    h3 リスポンス例:
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript json") 8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5
 
 .method-section
@@ -59,11 +64,14 @@
       The token expires after 8 hours, but can be revoked at any time.
     p To request a token, you must send your UID and HMAC Signature as HTTP Headers.
     table
-      caption Header Parameters
+      //-caption Header Parameters
+      caption ヘッダーパラメーター
       thead
         tr
-          th Name
-          th Validation
+          //-th Name
+          th 名前
+          //-th Validation          
+          th バリデーション
       tbody
         tr
           td X-Auth-UID
@@ -111,7 +119,8 @@
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript bash")
       | POST https://api.beta.jidoteki.com/auth/user
 
-    h3.method-request
+    //h3.method-request
+    h3 リクエスト例:
     pre(class="prettyprint lang-curl bash").
       $ curl -X POST https://api.beta.jidoteki.com/auth/user \
       --header "X-Api-Version: 1" \
@@ -131,7 +140,8 @@
       > jidoteki.settings.apikey = '96f1ad9d9407ebdf3603ca6b45ccd89';
       > jidoteki.getToken(function(result) { console.log(result); });
 
-    h3.method-response
+    //h3.method-response
+    h3 リスポンス例:
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript json").
       {"success":
         {
