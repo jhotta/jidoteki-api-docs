@@ -17,14 +17,14 @@
         tr
           td type
           //-td The type of message returned.
-          td APIリクエストに対すリスポンスのタイプ
+          td APIリクエストに対すリスポンスのタイプ。
             br
             strong Example: 
             <code>success</code> or <code>error</code>
         tr
           td message
           //-td A short description of the error.
-          td エラーの簡単な説明
+          td エラーの簡単な説明。
             br
             strong Example: 
             code Unable to authenticate
@@ -41,11 +41,16 @@
     //- h3 HTTP Status Code Summary
     h3 HTTPステータスコードの概要
     ul
-      li 200 OK - Success!
-      li 400 Bad Request - You're sending invalid data to the API.
-      li 403 Forbidden - Your request was not authenticated correctly.
-      li 404 Not Found - The requested URL could not be found.
-      li 500 Internal Server Error - A server error which is our fault. Sorry.
+      //- li 200 OK - Success!
+      li 200 OK - 成功!
+      //- li 400 Bad Request - You're sending invalid data to the API.
+      li 400 Bad Request - APIで送信されて無効なデータに含まれています。
+      //- li 403 Forbidden - Your request was not authenticated correctly.
+      li 403 Forbidden - リクエストの認証に失敗しています。
+      //- li 404 Not Found - The requested URL could not be found.
+      li 404 Not Found - リクエストしたURLが存在しません。
+      //- li 500 Internal Server Error - A server error which is our fault. Sorry.
+      li 500 Internal Server Error - Jidotekiが運営するサーバーの内部エラーです。
 
     //- h3.method-response
     h3 レスポンス例:

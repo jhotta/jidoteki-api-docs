@@ -37,49 +37,60 @@
         td セキュリティーの観点から、APIリクエストは、<a href="http://edn.wikipedia.org/wiki/HTTP_Secure">HTTPS</a>通信のみ対応。
       tr
         td TIMESTAMPS
-        td All timestamps are returned as UNIX timestamps in UTC, with 6 digit precision (microseconds).
+        //- td All timestamps are returned as UNIX timestamps in UTC, with 6 digit precision (microseconds).
+        td 全てのタイムスタンプは、UTC基準の6桁精度(microseconds)のUNIXタイムスタンプ。
           br
           <strong>Example:</strong> <code>1363414483.832038</code>
       tr
         td API VERSION
-        td The API VERSION is currently set to 1. It must be specified as a header in every request.
+        //- td The API VERSION is currently set to 1. It must be specified as a header in every request.
+        td 現在APIのバージョンは、1です。APIのバージョンは、リクエストのヘッダーで指定されている必要があります。
           br
           <strong>Example:</strong> <code>X-Api-Version: 1</code>
       tr
         td CONTENT-TYPE
-        td The content-type for all requests is a standard JSON MIME media type.
+        //- td The content-type for all requests is a standard JSON MIME media type.
+        td 全てのリクエストは、content-typeにJSON MIME mediaタイプがしてされている必要があります。
           br
           <strong>Example:</strong> <code>application/json</code>
       tr
         td PARAMETERS
-        td Request parameters must be sent as a JSON-formatted string.
+        //- td Request parameters must be sent as a JSON-formatted string.
+        td リクエストに含まれるパラメーターは、JSON形式でする必要があります。
           br
           <strong>Example:</strong> <code>{"os_id":"debian-7.1.0"}</code>
       tr
         td HMAC
-        td Each API request must contain an HMAC (signature) of the entire request. Details are in the Authentication section.
+        //- td Each API request must contain an HMAC (signature) of the entire request. Details are in the Authentication section.
+        td APIリクエストには、HMAC署名が記述されている必要があります。詳細に関しては、認証方法のセクションを参照してください。
       tr
         td API KEY
-        td A user's secret API KEY is used to generate each HMAC signature.
+        //- td A user's secret API KEY is used to generate each HMAC signature.
+        td シークレットAPIキーは、HMAC署名の生成に使用します。
       tr
         td ACCESS TOKENS
-        td An access token is a temporary unique identification string sent as an HTTP header. It expires after 8 hours.
+        //- td An access token is a temporary unique identification string sent as an HTTP header. It expires after 8 hours.
+        td An access token is a temporary unique identification string sent as an HTTP header. このトークンは8時間で無効に成ります。
       tr
         td USER-AGENT
-        td You can use almost any HTTP header User-Agent you want, limited to 128 characters.
+        //- td You can use almost any HTTP header User-Agent you want, limited to 128 characters.
+        td HTTPヘッダーのUser-Agentには、128文字内で自由に記述することが出来ます。
           br
           <strong>Example:</strong> <code>curl/7.21.4 (macbook air @ home)</code>
       tr
         td IPv6
-        td The API is accessible over IPv4 and IPv6.
+        //- td The API is accessible over IPv4 and IPv6.
+        td IPv4又はIPv6で、APIにアクセスすることが出来ます。
           br
           <strong>Example:</strong> <code>curl --ipv6</code>
       tr
         td SHA-256
-        td The hashing algorithm used to generate an HMAC signature is SHA-256.
+        //- td The hashing algorithm used to generate an HMAC signature is SHA-256.
+        td HMAC署名を生成するために、SHA-256のハッシュ生成アルゴリズムを使用しています。
       tr
         td UID
-        td When requesting an ACCESS TOKEN, you need to supply your UID (User ID) which is a 7-character alphanumeric string.
+        //- td When requesting an ACCESS TOKEN, you need to supply your UID (User ID) which is a 7-character alphanumeric string.
+        td アクセストークンは、 英数７文字のUID (User ID) を記述してリクエストします。
 
   .method-example
 
