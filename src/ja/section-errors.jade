@@ -2,7 +2,8 @@
   .method-description
 
     h1#errors エラーとテータスコード
-    p Below you will find a description of the JSON-formatted response for each API request.
+    //-p Below you will find a description of the JSON-formatted response for each API request.
+    p APIリクエストに対する、JSONフォーマットでのレスポンスの詳細を紹介します。
     table
       //-caption Attributes
       caption 属性
@@ -15,26 +16,30 @@
       tbody
         tr
           td type
-          td The type of message returned.
+          //-td The type of message returned.
+          td APIリクエストに対すリスポンスのタイプ
             br
             strong Example: 
             <code>success</code> or <code>error</code>
         tr
           td message
-          td A short description of the error.
+          //-td A short description of the error.
+          td エラーの簡単な説明
             br
             strong Example: 
             code Unable to authenticate
         tr
           td content
-          td This contains additional information regarding the response, such as an access token.
+          //-td This contains additional information regarding the response, such as an access token.
+          td アクセストークン情報など、リスポンスに含まれる追加情報。
             br
             strong Example: 
             code 2e0a696ea8746b5daa6e
 
   .method-example
 
-    h3 HTTP Status Code Summary
+    //- h3 HTTP Status Code Summary
+    h3 HTTPステータスコードの概要
     ul
       li 200 OK - Success!
       li 400 Bad Request - You're sending invalid data to the API.
@@ -42,7 +47,8 @@
       li 404 Not Found - The requested URL could not be found.
       li 500 Internal Server Error - A server error which is our fault. Sorry.
 
-    h3.method-response
+    //- h3.method-response
+    h3 レスポンス例:
     pre(class="prettyprint lang-curl json").
       {"error":
         {

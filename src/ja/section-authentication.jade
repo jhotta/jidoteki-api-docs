@@ -1,33 +1,46 @@
 .method-section
   .method-description
 
-    //-h1#authentication Authentication
+    //- h1#authentication Authentication
     h1#authentication APIの認証方法
-    p Authenticating to the Jidoteki API is a 2-step process.
+    //- p Authenticating to the Jidoteki API is a 2-step process.
+    p Jidoteki APIへの認証は、次の2つのステップが必要です。
+    //- p.
+    //-   First you must generate
+    //-   an HMAC signature for each request, then you must obtain an access token.
     p.
-      First you must generate
-      an HMAC signature for each request, then you must obtain an access token.
-    p Each subsequent API request must contain your access token and HMAC signature.
+      APIリクエストを送信する為に、まず最初にHMAC署名を生成します。その後、アクセストークンを取得します。
+
+    //- p Each subsequent API request must contain your access token and HMAC signature.
+    p その後のサブAPIリクエストもHMAC署名とアクセストークンをもって送信されている必要アあります。
 
   .method-example
-    //-h3 Authentication note:
+    //- h3 Authentication note:
     h3 認証方法に関する注意:
-    //-| If you're using one of our official client libraries, you DO NOT need to perform Step 1 & Step 2.
-      | 
-    //-| You can simply skip straight to making requests, but make sure your USERID and APIKEY are set.
-      |
+    //- | If you're using one of our official client libraries, you DO NOT need to perform Step 1 & Step 2.
+    | Jidotekiの公式クライアントライブラリーを使っている場合は、スッテプ1とステップ2は不要です。
+    //- | You can simply skip straight to making requests, but make sure your USERID and APIKEY are set.
+    | ユーザーIDとAPIキーを設定した後、直ちにJidoteki APIのリクエストをすることができます。
 
 .method-section
   .method-description
 
-    h1#authentication_step1 Step 1/2: Generating an HMAC signature
-    p Each API request must be accompanied by a signature.
+    //- h1#authentication_step1 Step 1/2: Generating an HMAC signature
+    h1#authentication_step1 ステップ1/2: HMAC署名の生成
+    //- p Each API request must be accompanied by a signature.
+    p APIリクエストは、HMAC署名を付して送信する必要があります。
+    //- p.
+    //-   To create a signature, you must concatenate the
+    //-   <code>request method</code> and
+    //-   <code>request url</code>, then sign
+    //-   the request using your <code>api key</code> and the HMAC-SHA256 algorithm.
     p.
       To create a signature, you must concatenate the
       <code>request method</code> and
       <code>request url</code>, then sign
       the request using your <code>api key</code> and the HMAC-SHA256 algorithm.
-    p The output is an SHA256 hash (signature) which you'll use to obtain an access token.
+    //- p The output is an SHA256 hash (signature) which you'll use to obtain an access token.
+    p 出力結果は、SHA256ハッシュ署名にまります。 この署名を利用してアクセストークンを取得します。
 
   .method-example
     h3 HMAC署名
@@ -51,26 +64,31 @@
       > jidoteki = require('jidoteki');
       > jidoteki.makeHMAC('POSThttps://api.beta.jidoteki.com/auth/user', function(cb) { console.log(cb); });
 
-    //h3.method-response
-    h3 リスポンス例:
+    //- h3.method-response
+    h3 レスポンス例:
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript json") 8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5
 
 .method-section
   .method-description
 
-    h1#authentication_step2 Step 2/2: Obtaining an access token
+    //- h1#authentication_step2 Step 2/2: Obtaining an access token
+    h1#authentication_step2 ステップ2/2: アクセストークンの取得
+    //- p.
+    //-   You must obtain a temporary access token prior to making any other API requests.
+    //-   The token expires after 8 hours, but can be revoked at any time.
     p.
       You must obtain a temporary access token prior to making any other API requests.
-      The token expires after 8 hours, but can be revoked at any time.
-    p To request a token, you must send your UID and HMAC Signature as HTTP Headers.
+      トークンは、８時間で期限切れになりますが、いつでも無効にすることが。
+    //- p To request a token, you must send your UID and HMAC Signature as HTTP Headers.
+    p トークンをリクエストする為には、HTTPヘッダー内で、UIDとHMAC署名送信する必要があります。
     table
-      //-caption Header Parameters
+      //- caption Header Parameters
       caption ヘッダーパラメーター
       thead
         tr
-          //-th Name
+          //- th Name
           th 名前
-          //-th Validation          
+          //- th Validation          
           th バリデーション
       tbody
         tr
@@ -78,7 +96,8 @@
           td
             code.required required
             br
-            | The UID must be exactly 7 characters and alphanumeric.
+            //- | The UID must be exactly 7 characters and alphanumeric.
+            | UIDは英数７文字。
             br
             strong Example: 
             code aecd580
@@ -87,7 +106,8 @@
           td
             code.required required
             br
-            | The HMAC Signature must be exactly 64 characters and alphanumeric.
+            //- | The HMAC Signature must be exactly 64 characters and alphanumeric.
+            | HMAC署名は、英数64文字。
             br
             strong Example: 
             code 8a7aecee7b4ddb056f3e67b69c43f50192e43f07366c278cc550dea2295583d5
@@ -96,7 +116,8 @@
           td
             code.required required
             br
-            | The API version is a single digit number.
+            //- | The API version is a single digit number.
+            | APIのバージョンは、数字1桁。
             br
             strong Example: 
             code 1
@@ -105,8 +126,9 @@
           td
             code.optional optional
             br
-            | If supplied, the User-Agent must be less than 128 characters, 
-            | can contain any alphanumeric characters, and some special characters.
+            //- | If supplied, the User-Agent must be less than 128 characters, 
+            //- | can contain any alphanumeric characters, and some special characters.
+            | User-Agentを指定する場合は、<code>_-.#/()@,;</code>の特殊文字を含む英数128文字。 
             br
             strong Accepted characters: 
             code _-.#/()@,;
@@ -119,7 +141,7 @@
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript bash")
       | POST https://api.beta.jidoteki.com/auth/user
 
-    //h3.method-request
+    //- h3.method-request
     h3 リクエスト例:
     pre(class="prettyprint lang-curl bash").
       $ curl -X POST https://api.beta.jidoteki.com/auth/user \
@@ -140,8 +162,8 @@
       > jidoteki.settings.apikey = '96f1ad9d9407ebdf3603ca6b45ccd89';
       > jidoteki.getToken(function(result) { console.log(result); });
 
-    //h3.method-response
-    h3 リスポンス例:
+    //- h3.method-response
+    h3 レスポンス例:
     pre(class="prettyprint lang-curl lang-coffeescript lang-javascript json").
       {"success":
         {
